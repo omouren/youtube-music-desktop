@@ -6,9 +6,9 @@ services:
 
 before_deploy:
   - docker build -t local/nativefier .
-  - docker run -v "$TRAVIS_BUILD_DIR":/src local/nativefier --platform "linux" --icon /src/youtube-music-logo.png --name "YoutubeMusic" "https://music.youtube.com/" --honest --disable-dev-tools --single-instance --tray --internal-urls .* /src/
-  - docker run -v "$TRAVIS_BUILD_DIR":/src local/nativefier --platform "windows" --icon /src/youtube-music-logo.png --name "Youtube Music" "https://music.youtube.com/" --honest --disable-dev-tools --single-instance --tray --internal-urls .* /src/
-  - docker run -v "$TRAVIS_BUILD_DIR":/src local/nativefier --platform "mac" --icon /src/youtube-music-logo.png --name "Youtube Music" "https://music.youtube.com/" --honest --disable-dev-tools --single-instance --tray --internal-urls .* /src/
+  - docker run -v "$TRAVIS_BUILD_DIR":/src local/nativefier --platform "linux" --icon /src/youtube-music-logo.png --name "YoutubeMusic" "https://music.youtube.com/" --honest --disable-dev-tools --single-instance --tray --internal-urls ".*" /src/
+  - docker run -v "$TRAVIS_BUILD_DIR":/src local/nativefier --platform "windows" --icon /src/youtube-music-logo.png --name "Youtube Music" "https://music.youtube.com/" --honest --disable-dev-tools --single-instance --tray --internal-urls ".*" /src/
+  - docker run -v "$TRAVIS_BUILD_DIR":/src local/nativefier --platform "mac" --icon /src/youtube-music-logo.png --name "Youtube Music" "https://music.youtube.com/" --honest --disable-dev-tools --single-instance --tray --internal-urls ".*" /src/
   - sudo chown -R travis:travis $TRAVIS_BUILD_DIR
   - for d in */ ; do base=$(basename "$d") ; cd "$base" ; zip -r "$base" * ; mv "${base}.zip" .. ; cd .. ; done;
 
