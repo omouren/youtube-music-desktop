@@ -16,8 +16,8 @@ deploy:
   provider: releases
   api_key: $GITHUB_OAUTH_KEY
   file:
-    - "youtube-music-win32-x64.zip"
-    - "youtube-music-darwin-x64.zip"
+    - "Youtube Music-win32-x64.zip"
+    - "Youtube Music-darwin-x64.zip"
     - "youtube-music-linux-x64.zip"
   skip_cleanup: true
   on:
